@@ -4,7 +4,8 @@
   },
   "auth": {
     "jwt": {
-      "secret": "chatsecret"
+      "secret": "chatsecret",
+      "prefix": "Bearer"
     }
   }
 }

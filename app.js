@@ -3,8 +3,10 @@ const app = express();
 const server = require('http').Server(app);
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const logger = require('morgan')
 const appConfig = require('config').get('app');
 
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());

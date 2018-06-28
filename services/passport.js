@@ -15,6 +15,17 @@ passport.use(new JwtStrategy({
   }
 ));
 
+passport.use('local-login', new LocalStrategy({
+  passReqToCallback: true
+}, async (req, username, password, done) => {
+  try {
+    const user = await AuthService.checkCredentials(username, password);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+}));
+
 passport.use('local-registration', new LocalStrategy({
   passReqToCallback: true
 }, async (req, username, password, done) => {
