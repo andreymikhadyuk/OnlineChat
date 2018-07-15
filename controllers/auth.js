@@ -22,7 +22,12 @@ const signup = (req, res, next) => {
   })(req, res, next);
 };
 
+const checkAuthorization = (req, res, next) => {
+  passport.authenticate('jwt', { session: false })(req, res, next);
+};
+
 module.exports = {
   login,
   signup,
+  checkAuthorization,
 };
