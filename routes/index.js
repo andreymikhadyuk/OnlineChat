@@ -10,6 +10,7 @@ router.post('/api/signup', AuthController.signup);
 
 router.get('/api/me', AuthController.checkAuthorization, UserController.getCurrentUserData);
 
-router.post('/api/message', AuthController.checkAuthorization, MessageController.saveMessage);
+router.get('/api/messages', AuthController.checkAuthorization, MessageController.getMessages);
+router.post('/api/messages', AuthController.checkAuthorization, MessageController.saveMessage);
 
 module.exports = router;

@@ -13,6 +13,15 @@ const saveMessage = (userId, { text, createdAt }) =>
     });
   });
 
+const getMessages = () =>
+  new Promise((resolve, reject) => {
+    Message.find({}, (err, messages) => {
+      if (err) return console.error(err) && reject(err);
+      resolve(messages);
+    });
+  });
+
 module.exports = {
   saveMessage,
+  getMessages,
 };

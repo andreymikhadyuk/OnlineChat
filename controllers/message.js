@@ -9,6 +9,14 @@ const saveMessage = (req, res) => {
     .catch(() => ResponseService.sendError(res));
 };
 
+const getMessages = (req, res) => {
+  if (!req.user) return ResponseService.sendUnauthorized(res);
+  MessageService.getMessages()
+    .then((messages) =>  ResponseService.sendOk(res, { messages }))
+    .catch(() => ResponseService.sendError(res));
+};
+
 module.exports = {
   saveMessage,
+  getMessages,
 };
