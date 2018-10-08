@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
+const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const logger = require('morgan')
+const logger = require('morgan');
 const appConfig = require('config').get('app');
 
 app.use(logger('dev'));
@@ -22,6 +23,8 @@ app.use((req, res, next) => {
 require('./models');
 
 app.use('/', require('./routes'));
+
+require('./services/SocketIOService')(io);
 
 server.listen(appConfig.port, () => {
   console.log(`App started on port ${appConfig.port}`);

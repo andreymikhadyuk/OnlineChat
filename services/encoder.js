@@ -6,7 +6,7 @@ const generateHash = (value, saltLength = 10) => {
 
 const compareValueAndHash = (value, hash) => {
   return bcrypt.compareSync(value, hash);
-}
+};
 
 module.exports = {
   generateHash,
